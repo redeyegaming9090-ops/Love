@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Himashree 💖</title>
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff1e4d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<style>
+/* ---------- Basic Styles ---------- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+/* ---------- Soft Romantic Glow ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,30,77,0.15), transparent 70%);
+  animation: pulseBg 4s infinite alternate;
+  z-index: -1;
+}
+@keyframes pulseBg { from { opacity:0.5; } to { opacity:1; } }
+
+/* ---------- Intro Splash ---------- */
+#intro {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  letter-spacing: 2px;
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+/* ---------- Lock Screen ---------- */
+#lockScreen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle,#ff4d6d,#000);
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.lockBox {
+  background: rgba(255,255,255,0.1);
+  padding: 35px;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(255,77,109,0.6);
+}
+input {
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+  width: 160px;
+}
+.unlockBtn {
+  margin-top: 12px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 25px;
+  background: #ff1e4d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ---------- Gift ---------- */
+#giftBox {
+  font-size: 100px;
+  margin-top: 120px;
+  cursor: pointer;
+  animation: giftZoom 4s ease-in-out infinite;
+  display: none;
+}
+@keyframes giftZoom { 0%,100%{transform:scale(1);} 50%{transform:scale(1.12);} }
+
+/* ---------- Proposal ---------- */
+.container {
+  margin-top: 40px;
+  padding: 20px;
+  display: none;
+  animation: fadeIn 2s ease forwards;
+}
+@keyframes fadeIn { from{opacity:0;transform:scale(0.95);} to{opacity:1;transform:scale(1);} }
+#message { font-size:22px; margin:20px; min-height:90px; }
+button {
+  padding: 14px 28px;
+  margin: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#yesBtn { background: #ff1e4d; color: white; box-shadow: 0 0 20px #ff1e4d; }
+#yesBtn:hover { transform: scale(1.12); }
+#noBtn { background: #ccc; position: absolute; }
+
+.slideshow img {
+  width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 22px;
+  box-shadow: 0 0 25px rgba(255,77,109,0.7);
+}
+
+/* ---------- Final Scene ---------- */
+.finalScene {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.finalText {
+  font-size: 48px;
+  margin-bottom: 20px;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow { from{text-shadow:0 0 10px #fff;} to{text-shadow:0 0 40px #ff1e4d,0 0 70px #ff1e4d;} }
+.letter {
+  max-width: 750px;
+  font-size: 22px;
+  line-height: 1.7;
+  opacity: 0;
+  transition: opacity 3s ease;
+}
+.show { opacity: 1; }
+
+/* ---------- Falling Hearts ---------- */
+.floatHeart {
+  position: fixed;
+  top: -10vh;
+  font-size: 24px;
+  pointer-events: none;
+  animation: fall 7s linear forwards;
+}
+@keyframes fall { to{transform:translateY(110vh);opacity:0;} }
+
+/* ---------- Stars ---------- */
+.star {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle { from{opacity:0.2;} to{opacity:1;} }
+
+/* ---------- Fireworks ---------- */
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: explode 900ms ease-out forwards;
+}
+@keyframes explode { from{transform:translate(0,0);opacity:1;} to{transform:translate(var(--x),var(--y));opacity:0;} }
+
+/* ---------- Confetti ---------- */
+@keyframes fallConfetti { to{transform:translateY(110vh) rotate(720deg);opacity:0;} }
+</style>
+</head>
+<body>
+
+<!-- ---------- Intro Splash ---------- -->
+<div id="intro">This is not just a website… it's my heart for you 💖</div>
+
+<!-- ---------- Lock Screen ---------- -->
+<div id="lockScreen">
+  <div class="lockBox">
+    <h2>Enter our special date 💖</h2>
+    <input type="password" id="pass">
+    <br>
+    <button class="unlockBtn" onclick="unlock()">Unlock 🔓</button>
+  </div>
+</div>
+
+<!-- ---------- Gift ---------- -->
+<div id="giftBox" onclick="openGift()">🎁<br><span style="font-size:18px;">open this gift i made specially for you 💖</span></div>
+
+<!-- ---------- Proposal ---------- -->
+<div id="proposal" class="container">
+  <div id="countdown" style="font-size:20px;margin-bottom:20px;font-weight:bold;"></div>
+  <h1>Dear Himashree Bhuiyan 💕</h1>
+  <p id="message"></p>
+  <div class="slideshow"><img id="slide" src="photo1.jpg"></div>
+  <p><strong>Will you be my Valentine forever? 💍</strong></p>
+  <button id="yesBtn" onclick="celebrate()">Yes ❤️</button>
+  <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+</div>
+
+<!-- ---------- Audio ---------- -->
+<audio id="loveSong" src="song.mp3" loop></audio>
+
+<script>
+/* ---------- Intro → Lock ---------- */
+setTimeout(() => {
+  const intro = document.getElementById('intro');
+  intro.style.opacity = '0';
+  setTimeout(() => {
+    intro.style.display = 'none';
+    const lock = document.getElementById('lockScreen');
+    lock.style.display = 'flex';
+    setTimeout(() => { lock.style.opacity = '1'; }, 50);
+    document.getElementById('pass').focus();
+  }, 2000);
+}, 3000);
+
+/* ---------- Unlock & Play Song ---------- */
+function unlock(){
+  const val = document.getElementById('pass').value.trim().toLowerCase();
+  if(val==='1jan'){
+    document.getElementById('lockScreen').style.display='none';
+    document.getElementById('giftBox').style.display='block';
+    const song = document.getElementById('loveSong');
+    song.play().catch(err=>console.log("Song play failed:", err));
+  }
+}
+
+/* ---------- Gift ---------- */
+function openGift(){
+  document.getElementById('giftBox').style.display='none';
+  document.getElementById('proposal').style.display='block';
+  startNotes();
+  startSlideshow();
+  updateCountdown();
+  setInterval(updateCountdown,60000);
+}
+
+/* ---------- Typing Notes ---------- */
+const notes = [
+  'You are my happiness 🌸',
+  'You are my peace 🕊️',
+  'Every moment with you feels magical ✨',
+  'I want to laugh, dream, and grow with you forever 💖',
+  'Himashree… will you be mine forever? 💍'
+];
+let ni=0,ci=0;
+function startNotes(){
+  document.getElementById('message').innerHTML="";
+  typeNote();
+}
+function typeNote(){
+  if(ci<notes[ni].length){
+    document.getElementById('message').innerHTML+=notes[ni][ci++];
+    setTimeout(typeNote,45);
+  }else if(++ni<notes.length){
+    document.getElementById('message').innerHTML+='<br><br>';
+    ci=0;
+    setTimeout(typeNote,700);
+  }
+}
+
+/* ---------- Slideshow ---------- */
+const photos = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg'];
+let si=0;
+function startSlideshow(){
+  setInterval(()=>{ si=(si+1)%photos.length; document.getElementById('slide').src = photos[si]; },2800);
+}
+
+/* ---------- Move No Button ---------- */
+function moveNo(){
+  const b=document.getElementById('noBtn');
+  const maxX=window.innerWidth-b.offsetWidth;
+  const maxY=window.innerHeight-b.offsetHeight;
+  b.style.left=Math.random()*maxX+'px';
+  b.style.top=Math.random()*maxY+'px';
+}
+
+/* ---------- Countdown ---------- */
+function updateCountdown(){
+  const now=new Date();
+  const year=now.getFullYear();
+  const valentine=new Date(year,1,14);
+  if(now>valentine){valentine.setFullYear(year+1);}
+  const diff=valentine-now;
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  const m=Math.floor((diff/(1000*60))%60);
+  document.getElementById("countdown").innerHTML =
+    `⏳ Countdown to our Valentine: ${d}d ${h}h ${m}m 💖`;
+}
+
+/* ---------- Celebrate Function ---------- */
+function celebrate(){
+  confettiBurst();
+  launchFireworks();
+  setInterval(launchFireworks,1200);
+  createStars();
+  startFallingHearts();
+  const finalScene=document.createElement('div');
+  finalScene.className='finalScene';
+  finalScene.innerHTML=`
+    <div class='finalText'>She said YES!!! 💖🌹💍</div>
+    <div class='letter' id='finalLetter'>
+      Thank you for being my Valentine 💕<br>
+      I promise to make you the happiest woman alive 🌍💖<br>
+      Stay with me in smiles, in tears, in every moment of life 🤍🌹<br><br>
+      <b style='font-size:28px;'>Forever yours ❤️</b>
+    </div>`;
+  document.body.appendChild(finalScene);
+  setTimeout(()=>document.getElementById('finalLetter').classList.add('show'),2000);
+}
+
+/* ---------- Fireworks ---------- */
+function launchFireworks(){
+  for(let b=0;b<6;b++){
+    const burstX=Math.random()*window.innerWidth;
+    const burstY=Math.random()*window.innerHeight*0.7;
+    for(let i=0;i<25;i++){
+      const f=document.createElement("div");
+      f.className="firework";
+      f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+      f.style.left=burstX+"px";
+      f.style.top=burstY+"px";
+      const angle=Math.random()*2*Math.PI;
+      const radius=60+Math.random()*140;
+      f.style.setProperty("--x",Math.cos(angle)*radius+"px");
+      f.style.setProperty("--y",Math.sin(angle)*radius+"px");
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(),900);
+    }
+  }
+}
+
+/* ---------- Confetti ---------- */
+function confettiBurst(){
+  for(let i=0;i<80;i++){
+    const c=document.createElement("div");
+    c.style.position="fixed";
+    c.style.width="8px";
+    c.style.height="8px";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.left=Math.random()*100+"vw";
+    c.style.top="-10px";
+    c.style.borderRadius="2px";
+    c.style.animation="fallConfetti 3s linear forwards";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),3000);
+  }
+}
+
+/* ---------- Falling Hearts ---------- */
+function startFallingHearts(){
+  setInterval(()=>{
+    const h=document.createElement('div');
+    h.className='floatHeart';
+    h.innerHTML=Math.random()>0.5?'💖':'🌹';
+    h.style.left=Math.random()*100+'vw';
+    h.style.fontSize=(22+Math.random()*26)+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),7000);
+  },80);
+}
+
+/* ---------- Stars ---------- */
+function createStars(){
+  for(let i=0;i<120;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    s.style.left=Math.random()*100+'vw';
+    s.style.top=Math.random()*100+'vh';
+    s.style.animationDelay=Math.random()*2+'s';
+    document.body.appendChild(s);
+  }
+}
+
+/* ---------- Secret Double Click ---------- */
+document.body.addEventListener("dblclick",()=>{
+  const secret=document.createElement("div");
+  secret.innerHTML="You found my hidden love message 💌 I love you more than words can say 💖";
+  secret.style.position="fixed";
+  secret.style.top="50%";
+  secret.style.left="50%";
+  secret.style.transform="translate(-50%,-50%)";
+  secret.style.background="rgba(0,0,0,0.85)";
+  secret.style.padding="25px";
+  secret.style.borderRadius="20px";
+  secret.style.boxShadow="0 0 30px #ff1e4d";
+  document.body.appendChild(secret);
+  setTimeout(()=>secret.remove(),4000);
+});
+
+/* ---------- Register Service Worker ---------- */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js')
+  .then(()=>console.log("Service Worker registered ✅"))
+  .catch(err=>console.log("Service Worker failed ❌", err));
+}
+</script>
+</body>
+</html>
